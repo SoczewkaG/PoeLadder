@@ -1,7 +1,7 @@
 body {
     width: 100%;
     margin: 0;
-    background-image: linear-gradient(to top, rgba(16,1,31,0.839), rgba(16,1,31,0.839)), url(/img/bg.jpg);
+    background-image: linear-gradient(to top, rgba(16,1,31,0.839), rgba(16,1,31,0.839)), url(img/bg.jpg);
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
@@ -383,3 +383,4 @@ p {
         max-width: 300px;
     }
 }
+
