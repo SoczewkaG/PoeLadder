@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="top-content">
+        <div id="title"> <h1 class="gradient-text">Ladder - Cmentarzysko Strażnicy Płomienia</h1> </div>
+        <div class="top-content-buttons">
+            <button id="toggleDarkMode" style="display: none;">☀️ Tryb jasny</button>
+            <input type="text" id="searchInput" placeholder="Wyszukaj postać lub konto...">
+            <select id="classFilter">
+                <option value="">Wybierz klasę</option>
+                <option value="Marauder">Marauder</option>
+                <option value="Juggernaut">Juggernaut</option>
+                <option value="Berserker">Berserker</option>
+                <option value="Chieftain">Chieftain</option>
+                <option value="Witch">Witch</option>
+                <option value="Necromancer">Necromancer</option>
+                <option value="Elementalist">Elementalist</option>
+                <option value="Occultist">Occultist</option>
+                <option value="Templar">Templar</option>
+                <option value="Inquisitor">Inquisitor</option>
+                <option value="Hierophant">Hierophant</option>
+                <option value="Guardian">Guardian</option>
+                <option value="Shadow">Shadow</option>
+                <option value="Assassin">Assassin</option>
+                <option value="Saboteur">Saboteur</option>
+                <option value="Trickster">Trickster</option>
+                <option value="Duelist">Duelist</option>
+                <option value="Slayer">Slayer</option>
+                <option value="Gladiator">Gladiator</option>
+                <option value="Champion">Champion</option>
+                <option value="Ranger">Ranger</option>
+                <option value="Deadeye">Deadeye</option>
+                <option value="Raider">Raider</option>
+                <option value="Pathfinder">Pathfinder</option>
+                <option value="Warden">Warden</option>
+                <option value="Scion">Scion</option>
+                <option value="Ascendant">Ascendant</option>
+            </select>
+            <button id="toggleAliveOnly">🏃‍➡️ Pokaż tylko żywych</button>
+            <button id="toggleDeadOnly">💀 Pokaż tylko martwych</button>
+        </div>
+
+        
+    </div>
+    <div class="container"> 
+    <p id="stats">Liczba postaci: 3270 | Liczba martwych: 2511</p></div>
+         <table>
+        <thead>
+            <tr>
+                <th>Pozycja</th>
+                <th>Konto</th>
+                <th>Postać (jest wraz z odnośnikiem do profilu)</th>
+                <th>Poziom</th>
+                <th>Klasa</th>
+                <th>Postęp</th>
+                <th>XPH*</th>
+                <th>Stan</th>
+            </tr>
+        </thead>
+        <tbody id="leaderboard"><tr class="Berserker ">
+            <td>1</td>
+            <td>ant123321#0103</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/ant123321%230103/characters?characterName=SlamBerserkerr" target="_blank" style="color: inherit; text-decoration: none;">SlamBerserkerr</a></td>
+            <td>100</td>
+            <td>Berserker</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 100%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 100%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td></td>
+        </tr><tr class="Assassin ">
+            <td>2</td>
+            <td>Luluguy#5629</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/Luluguy%235629/characters?characterName=PiotrZatruwuje" target="_blank" style="color: inherit; text-decoration: none;">PiotrZatruwuje</a></td>
+            <td>100</td>
+            <td>Assassin</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 100%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 100%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td></td>
+        </tr><tr class="Berserker ">
+            <td>3</td>
+            <td>MaesterVeyer#6579</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/MaesterVeyer%236579/characters?characterName=CmentarnyVeyer" target="_blank" style="color: inherit; text-decoration: none;">CmentarnyVeyer</a></td>
+            <td>99</td>
+            <td>Berserker</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 81.82123243120343%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 81.82123243120343%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td></td>
+        </tr><tr class="Berserker dead">
+            <td>4</td>
+            <td>NBDNGU#3143</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/NBDNGU%233143/characters?characterName=JEBAC_POEtwo" target="_blank" style="color: inherit; text-decoration: none;">JEBAC_POEtwo</a></td>
+            <td>99</td>
+            <td>Berserker</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 58.49255228196216%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 58.49255228196216%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td>💀 RIP</td>
+        </tr><tr class="Juggernaut ">
+            <td>5</td>
+            <td>adm1k#5989</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/adm1k%235989/characters?characterName=admik_femboiii" target="_blank" style="color: inherit; text-decoration: none;">admik_femboiii</a></td>
+            <td>99</td>
+            <td>Juggernaut</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 25.52265396058227%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 25.52265396058227%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td></td>
+        </tr><tr class="Elementalist ">
+            <td>6</td>
+            <td>Tommy_Chucks#3491</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/Tommy_Chucks%233491/characters?characterName=Tommy_Chucks" target="_blank" style="color: inherit; text-decoration: none;">Tommy_Chucks</a></td>
+            <td>99</td>
+            <td>Elementalist</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 18.12109707357849%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 18.12109707357849%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td></td>
+        </tr><tr class="Berserker dead">
+            <td>7</td>
+            <td>Sindekus#5651</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/Sindekus%235651/characters?characterName=boppl" target="_blank" style="color: inherit; text-decoration: none;">boppl</a></td>
+            <td>99</td>
+            <td>Berserker</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 4.655175803251234%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 4.655175803251234%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td>💀 RIP</td>
+        </tr><tr class="Hierophant dead">
+            <td>8</td>
+            <td>Seerax#4335</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/Seerax%234335/characters?characterName=薄明の花" target="_blank" style="color: inherit; text-decoration: none;">薄明の花</a></td>
+            <td>99</td>
+            <td>Hierophant</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 2.940728822807918%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 2.940728822807918%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td>💀 RIP</td>
+        </tr><tr class="Saboteur ">
+            <td>9</td>
+            <td>PanStick#1319</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/PanStick%231319/characters?characterName=pomocynicniewidze" target="_blank" style="color: inherit; text-decoration: none;">pomocynicniewidze</a></td>
+            <td>99</td>
+            <td>Saboteur</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 0.23418259281328493%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 0.23418259281328493%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td></td>
+        </tr><tr class="Necromancer dead">
+            <td>10</td>
+            <td>Siurson#1873</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/Siurson%231873/characters?characterName=UpadekCzlowieka_Siurson" target="_blank" style="color: inherit; text-decoration: none;">UpadekCzlowieka_Siurson</a></td>
+            <td>98</td>
+            <td>Necromancer</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 60.37958878279536%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 60.37958878279536%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td>💀 RIP</td>
+        </tr><tr class="Berserker ">
+            <td>11</td>
+            <td>kemol#6606</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/kemol%236606/characters?characterName=KemoII" target="_blank" style="color: inherit; text-decoration: none;">KemoII</a></td>
+            <td>98</td>
+            <td>Berserker</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 43.3715146790858%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 43.3715146790858%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td></td>
+        </tr><tr class="Occultist ">
+            <td>12</td>
+            <td>F3rgI#3417</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/F3rgI%233417/characters?characterName=opusdei_fergi" target="_blank" style="color: inherit; text-decoration: none;">opusdei_fergi</a></td>
+            <td>98</td>
+            <td>Occultist</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 40.31526246878494%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 40.31526246878494%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td></td>
+        </tr><tr class="Necromancer ">
+            <td>13</td>
+            <td>Tentoze#5134</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/Tentoze%235134/characters?characterName=TentozeToMinioniarz" target="_blank" style="color: inherit; text-decoration: none;">TentozeToMinioniarz</a></td>
+            <td>98</td>
+            <td>Necromancer</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 33.796077284737144%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 33.796077284737144%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td></td>
+        </tr><tr class="Gladiator dead">
+            <td>14</td>
+            <td>Siurson#1873</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/Siurson%231873/characters?characterName=SiursonBreachuje" target="_blank" style="color: inherit; text-decoration: none;">SiursonBreachuje</a></td>
+            <td>98</td>
+            <td>Gladiator</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 14.331127475307861%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 14.331127475307861%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td>💀 RIP</td>
+        </tr><tr class="Slayer dead">
+            <td>15</td>
+            <td>damianosbbx#2171</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/damianosbbx%232171/characters?characterName=jeG_ikcydroN" target="_blank" style="color: inherit; text-decoration: none;">jeG_ikcydroN</a></td>
+            <td>98</td>
+            <td>Slayer</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 6.883081365314507%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 6.883081365314507%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td>💀 RIP</td>
+        </tr><tr class="Berserker dead">
+            <td>16</td>
+            <td>F3rgI#3417</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/F3rgI%233417/characters?characterName=fergi_bubuoro" target="_blank" style="color: inherit; text-decoration: none;">fergi_bubuoro</a></td>
+            <td>98</td>
+            <td>Berserker</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 6.310681239484249%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 6.310681239484249%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td>💀 RIP</td>
+        </tr><tr class="Chieftain dead">
+            <td>17</td>
+            <td>veNNNx#0523</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/veNNNx%230523/characters?characterName=PalaceKolanoPierwsze" target="_blank" style="color: inherit; text-decoration: none;">PalaceKolanoPierwsze</a></td>
+            <td>98</td>
+            <td>Chieftain</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 5.962383847752284%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 5.962383847752284%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td>💀 RIP</td>
+        </tr><tr class="Slayer ">
+            <td>18</td>
+            <td>MrFrejzic#0116</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/MrFrejzic%230116/characters?characterName=KrwaweTrzasniecieDwa" target="_blank" style="color: inherit; text-decoration: none;">KrwaweTrzasniecieDwa</a></td>
+            <td>98</td>
+            <td>Slayer</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 2.737770673227587%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 2.737770673227587%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td></td>
+        </tr><tr class="Slayer dead">
+            <td>19</td>
+            <td>OldCrocodile#2815</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/OldCrocodile%232815/characters?characterName=Zipi_Bleed" target="_blank" style="color: inherit; text-decoration: none;">Zipi_Bleed</a></td>
+            <td>97</td>
+            <td>Slayer</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 80.8597234492026%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 80.8597234492026%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td>💀 RIP</td>
+        </tr><tr class="Hierophant dead">
+            <td>20</td>
+            <td>Seerax#4335</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/Seerax%234335/characters?characterName=Seerax_in_a_flash" target="_blank" style="color: inherit; text-decoration: none;">Seerax_in_a_flash</a></td>
+            <td>97</td>
+            <td>Hierophant</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 80.5090612646398%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 80.5090612646398%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td>💀 RIP</td>
+        </tr><tr class="Hierophant ">
+            <td>21</td>
+            <td>Tommy_Chucks#3491</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/Tommy_Chucks%233491/characters?characterName=GrandpaTommyChucks" target="_blank" style="color: inherit; text-decoration: none;">GrandpaTommyChucks</a></td>
+            <td>97</td>
+            <td>Hierophant</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 79.41513455303455%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 79.41513455303455%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td></td>
+        </tr><tr class="Berserker dead">
+            <td>22</td>
+            <td>Pacio211#3899</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/Pacio211%233899/characters?characterName=pacioslamy" target="_blank" style="color: inherit; text-decoration: none;">pacioslamy</a></td>
+            <td>97</td>
+            <td>Berserker</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 67.26528696752%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 67.26528696752%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td>💀 RIP</td>
+        </tr><tr class="Slayer ">
+            <td>23</td>
+            <td>Gempron33#2979</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/Gempron33%232979/characters?characterName=Marduk_Kreciolek" target="_blank" style="color: inherit; text-decoration: none;">Marduk_Kreciolek</a></td>
+            <td>97</td>
+            <td>Slayer</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 62.08783744858566%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 62.08783744858566%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td></td>
+        </tr><tr class="Trickster ">
+            <td>24</td>
+            <td>oczo1990#0153</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/oczo1990%230153/characters?characterName=KrzychuTruciciel" target="_blank" style="color: inherit; text-decoration: none;">KrzychuTruciciel</a></td>
+            <td>97</td>
+            <td>Trickster</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 54.67683079304801%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 54.67683079304801%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td></td>
+        </tr><tr class="Slayer ">
+            <td>25</td>
+            <td>dejq123#7878</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/dejq123%237878/characters?characterName=KiracPobilMenela" target="_blank" style="color: inherit; text-decoration: none;">KiracPobilMenela</a></td>
+            <td>97</td>
+            <td>Slayer</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 54.34623346601818%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 54.34623346601818%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td></td>
+        </tr><tr class="Pathfinder ">
+            <td>26</td>
+            <td>msqakaario#3874</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/msqakaario%233874/characters?characterName=mesmerro_Zatruty" target="_blank" style="color: inherit; text-decoration: none;">mesmerro_Zatruty</a></td>
+            <td>97</td>
+            <td>Pathfinder</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 54.03413016572682%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 54.03413016572682%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td></td>
+        </tr><tr class="Chieftain ">
+            <td>27</td>
+            <td>Herokac#7273</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/Herokac%237273/characters?characterName=JAPIERNICZE" target="_blank" style="color: inherit; text-decoration: none;">JAPIERNICZE</a></td>
+            <td>97</td>
+            <td>Chieftain</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 36.74998335153482%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 36.74998335153482%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td></td>
+        </tr><tr class="Hierophant dead">
+            <td>28</td>
+            <td>Merci18#6182</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/Merci18%236182/characters?characterName=MersiKujek" target="_blank" style="color: inherit; text-decoration: none;">MersiKujek</a></td>
+            <td>97</td>
+            <td>Hierophant</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 25.54784461602245%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 25.54784461602245%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td>💀 RIP</td>
+        </tr><tr class="Berserker ">
+            <td>29</td>
+            <td>artik151#5210</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/artik151%235210/characters?characterName=Artik__" target="_blank" style="color: inherit; text-decoration: none;">Artik__</a></td>
+            <td>97</td>
+            <td>Berserker</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 23.8001621987054%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 23.8001621987054%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td></td>
+        </tr><tr class="Slayer dead">
+            <td>30</td>
+            <td>heloł#3022</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/heloł%233022/characters?characterName=wiktorruzdzkowydwa" target="_blank" style="color: inherit; text-decoration: none;">wiktorruzdzkowydwa</a></td>
+            <td>97</td>
+            <td>Slayer</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 16.56914114537314%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 16.56914114537314%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td>💀 RIP</td>
+        </tr><tr class="Hierophant dead">
+            <td>31</td>
+            <td>Sindekus#5651</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/Sindekus%235651/characters?characterName=ArcyNygusPl" target="_blank" style="color: inherit; text-decoration: none;">ArcyNygusPl</a></td>
+            <td>97</td>
+            <td>Hierophant</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 2.7861197323081908%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 2.7861197323081908%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td>💀 RIP</td>
+        </tr><tr class="Gladiator ">
+            <td>32</td>
+            <td>yaha01#3284</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/yaha01%233284/characters?characterName=yahableed" target="_blank" style="color: inherit; text-decoration: none;">yahableed</a></td>
+            <td>97</td>
+            <td>Gladiator</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 0.8067156286894313%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 0.8067156286894313%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td></td>
+        </tr><tr class="Chieftain dead">
+            <td>33</td>
+            <td>peterasik#0953</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/peterasik%230953/characters?characterName=NOOBz_I" target="_blank" style="color: inherit; text-decoration: none;">NOOBz_I</a></td>
+            <td>96</td>
+            <td>Chieftain</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 72.99755814939587%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 72.99755814939587%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td>💀 RIP</td>
+        </tr><tr class="Berserker dead">
+            <td>34</td>
+            <td>Peszkiiin#5136</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/Peszkiiin%235136/characters?characterName=Peszkinoss" target="_blank" style="color: inherit; text-decoration: none;">Peszkinoss</a></td>
+            <td>96</td>
+            <td>Berserker</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 62.06814632891678%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 62.06814632891678%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td>💀 RIP</td>
+        </tr><tr class="Elementalist dead">
+            <td>35</td>
+            <td>esttujest8i5#1509</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/esttujest8i5%231509/characters?characterName=est_CzarkaPieczarka" target="_blank" style="color: inherit; text-decoration: none;">est_CzarkaPieczarka</a></td>
+            <td>96</td>
+            <td>Elementalist</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 51.50935960169919%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 51.50935960169919%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td>💀 RIP</td>
+        </tr><tr class="Elementalist dead">
+            <td>36</td>
+            <td>scooter1997#7755</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/scooter1997%237755/characters?characterName=UdusilbymFotowoltanike" target="_blank" style="color: inherit; text-decoration: none;">UdusilbymFotowoltanike</a></td>
+            <td>96</td>
+            <td>Elementalist</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 27.035056205680014%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 27.035056205680014%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td>💀 RIP</td>
+        </tr><tr class="Juggernaut dead">
+            <td>37</td>
+            <td>Milous1717#7788</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/Milous1717%237788/characters?characterName=CocoJumboiDoPrzoduu" target="_blank" style="color: inherit; text-decoration: none;">CocoJumboiDoPrzoduu</a></td>
+            <td>96</td>
+            <td>Juggernaut</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 18.50062178792894%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 18.50062178792894%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td>💀 RIP</td>
+        </tr><tr class="Berserker dead">
+            <td>38</td>
+            <td>Physiu#3439</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/Physiu%233439/characters?characterName=PhysSsSlam" target="_blank" style="color: inherit; text-decoration: none;">PhysSsSlam</a></td>
+            <td>96</td>
+            <td>Berserker</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 3.1206478877743407%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 3.1206478877743407%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td>💀 RIP</td>
+        </tr><tr class="Necromancer dead">
+            <td>39</td>
+            <td>Fajlop#6102</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/Fajlop%236102/characters?characterName=fajlopppp" target="_blank" style="color: inherit; text-decoration: none;">fajlopppp</a></td>
+            <td>95</td>
+            <td>Necromancer</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 93.36198912484677%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 93.36198912484677%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td>💀 RIP</td>
+        </tr><tr class="Pathfinder dead">
+            <td>40</td>
+            <td>Surmiak#2213</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/Surmiak%232213/characters?characterName=Surmiak_Trunik" target="_blank" style="color: inherit; text-decoration: none;">Surmiak_Trunik</a></td>
+            <td>95</td>
+            <td>Pathfinder</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 85.33217535267893%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 85.33217535267893%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td>💀 RIP</td>
+        </tr><tr class="Berserker dead">
+            <td>41</td>
+            <td>damianosbbx#2171</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/damianosbbx%232171/characters?characterName=Kurier__UNBREAKABLE" target="_blank" style="color: inherit; text-decoration: none;">Kurier__UNBREAKABLE</a></td>
+            <td>95</td>
+            <td>Berserker</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 75.41563940398736%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 75.41563940398736%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td>💀 RIP</td>
+        </tr><tr class="Elementalist dead">
+            <td>42</td>
+            <td>kryzac1#0343</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/kryzac1%230343/characters?characterName=LasbyanDoom" target="_blank" style="color: inherit; text-decoration: none;">LasbyanDoom</a></td>
+            <td>95</td>
+            <td>Elementalist</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 72.33072694275864%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 72.33072694275864%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td>💀 RIP</td>
+        </tr><tr class="Berserker dead">
+            <td>43</td>
+            <td>McKlusky#0477</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/McKlusky%230477/characters?characterName=PerskieOko" target="_blank" style="color: inherit; text-decoration: none;">PerskieOko</a></td>
+            <td>95</td>
+            <td>Berserker</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 69.86294835787776%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 69.86294835787776%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td>💀 RIP</td>
+        </tr><tr class="Ascendant dead">
+            <td>44</td>
+            <td>Kerganlay#7498</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/Kerganlay%237498/characters?characterName=Suka_Szatana" target="_blank" style="color: inherit; text-decoration: none;">Suka_Szatana</a></td>
+            <td>95</td>
+            <td>Ascendant</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 61.75517602550047%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 61.75517602550047%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td>💀 RIP</td>
+        </tr><tr class="Slayer dead">
+            <td>45</td>
+            <td>MrFrejzic#0116</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/MrFrejzic%230116/characters?characterName=ZCVZXVZX" target="_blank" style="color: inherit; text-decoration: none;">ZCVZXVZX</a></td>
+            <td>95</td>
+            <td>Slayer</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 55.573674115843176%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 55.573674115843176%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td>💀 RIP</td>
+        </tr><tr class="Hierophant ">
+            <td>46</td>
+            <td>bieniasss#0612</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/bieniasss%230612/characters?characterName=Manasanes" target="_blank" style="color: inherit; text-decoration: none;">Manasanes</a></td>
+            <td>95</td>
+            <td>Hierophant</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 51.10941562806719%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 51.10941562806719%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td></td>
+        </tr><tr class="Slayer dead">
+            <td>47</td>
+            <td>kemol#6606</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/kemol%236606/characters?characterName=Kemoolll" target="_blank" style="color: inherit; text-decoration: none;">Kemoolll</a></td>
+            <td>95</td>
+            <td>Slayer</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 48.449287382514825%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 48.449287382514825%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td>💀 RIP</td>
+        </tr><tr class="Berserker dead">
+            <td>48</td>
+            <td>Peszkiiin#5136</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/Peszkiiin%235136/characters?characterName=Peszkinoski" target="_blank" style="color: inherit; text-decoration: none;">Peszkinoski</a></td>
+            <td>95</td>
+            <td>Berserker</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 44.78602684255299%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 44.78602684255299%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td>💀 RIP</td>
+        </tr><tr class="Slayer dead">
+            <td>49</td>
+            <td>PanStick#1319</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/PanStick%231319/characters?characterName=PanStickBriczDwa" target="_blank" style="color: inherit; text-decoration: none;">PanStickBriczDwa</a></td>
+            <td>95</td>
+            <td>Slayer</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 33.31011727722136%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 33.31011727722136%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td>💀 RIP</td>
+        </tr><tr class="Juggernaut dead">
+            <td>50</td>
+            <td>Pietras112#4404</td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/Pietras112%234404/characters?characterName=PietrasPoznyStart" target="_blank" style="color: inherit; text-decoration: none;">PietrasPoznyStart</a></td>
+            <td>95</td>
+            <td>Juggernaut</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: 25.5159383880142%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
+                    <div style="width: 25.5159383880142%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
+            <td class=""></td>
+            <td>💀 RIP</td>
+        </tr></tbody>
+        </table>
+        <p>*XPH jest z ostatnich 3 minut bo co tyle się strona aktualizuje.</p>
+        <div class="container">
+            <button id="firstPage">Pierwsza</button>
+            <button id="prevPage">Poprzednia</button>
+            <button id="nextPage">Następna</button>
+            <button id="lastPage">Ostatnia</button>
+        </div>
+
+        <div class="container"> 
+            <div id="additionalStats">
+            <h3>Statystyki dla KasztanTV:</h3>
+            <p id="averageTop50">Średni poziom top 50: 96.98</p>
+            <p id="averageTop100">Średni poziom top 100: 95.31</p>
+            <p id="aliveAboveLevel10">Ilość żywych postaci &gt;10 lvl: 438</p>
+            </div>
+        </div>
+        <div id="footer">
+   	    <p>Strona stworzona przez wiecu</p>
+	    </div>
+    <script src="script.js"></script>
+</body>
+</html>
