@@ -1,4 +1,3 @@
-
 // Zakładam, że te zmienne są zdefiniowane na poziomie globalnym
 let allEntries = [];  // Tablica przechowująca wszystkie dane leaderboarda
 let offset = 0;  // Początkowa wartość offsetu
@@ -7,182 +6,183 @@ let darkMode = true;
 let totalResults = 5000;  // Całkowita liczba wyników
 let showOnlyDead = false;  // Flaga do filtrowania tylko martwych postaci
 let showOnlyAlive = false;
-        document.body.classList.toggle("light-mode", !darkMode);
 
-        document.getElementById("toggleDarkMode").addEventListener("click", () => {
-            darkMode = !darkMode;
-            document.body.classList.toggle("light-mode", !darkMode);
-            document.getElementById("toggleDarkMode").innerText = darkMode ? "☀️ Tryb jasny" : "🌙 Tryb ciemny";
-        });
-        document.getElementById("toggleDeadOnly").addEventListener("click", () => {
-            showOnlyDead = !showOnlyDead;
-            document.getElementById("toggleDeadOnly").innerText = showOnlyDead ? "Pokaż wszystkich" : "💀 Pokaż tylko martwych";
-            fetchLeaderboard();
-        });
+document.body.classList.toggle("light-mode", !darkMode);
 
+document.getElementById("toggleDarkMode").addEventListener("click", () => {
+    darkMode = !darkMode;
+    document.body.classList.toggle("light-mode", !darkMode);
+    document.getElementById("toggleDarkMode").innerText = darkMode ? "☀️ Tryb jasny" : "🌙 Tryb ciemny";
+});
 
-// Zaktualizuj filtr po zmianie wyboru klasy
+document.getElementById("toggleDeadOnly").addEventListener("click", () => {
+    showOnlyDead = !showOnlyDead;
+    document.getElementById("toggleDeadOnly").innerText = showOnlyDead ? "Pokaż wszystkich" : "💀 Pokaż tylko martwych";
+    fetchLeaderboard();
+});
+
+document.getElementById("toggleAliveOnly").addEventListener("click", () => {
+    showOnlyAlive = !showOnlyAlive;
+    document.getElementById("toggleAliveOnly").innerText = showOnlyAlive ? "Pokaż wszystkich" : "🟢 Pokaż tylko żywych";
+    fetchLeaderboard();
+});
+
 document.getElementById("classFilter").addEventListener("change", fetchLeaderboard);
 
-// Funkcja pobierająca wszystkie dane leaderboarda
 async function fetchAllEntries() {
     try {
         const response = await fetch(`https://cmentarzysko-kasztanowa.onrender.com/leaderboard?limit=${totalResults}`);
         const data = await response.json();
-        allEntries = data.entries;  // Zapisujemy wszystkie dane
-        fetchLeaderboard();  // Wywołujemy funkcję do wyświetlenia danych
-        calculateAdditionalStats();  // Obliczamy dodatkowe statystyki
+        allEntries = data.entries;
+        fetchLeaderboard();
+        calculateAdditionalStats();
     } catch (error) {
         console.error("Błąd ładowania leaderboarda:", error);
     }
 }
-document.getElementById("toggleAliveOnly").addEventListener("click", () => {
-    showOnlyAlive = !showOnlyAlive;  // Zmieniamy stan
-    document.getElementById("toggleAliveOnly").innerText = showOnlyAlive ? "Pokaż wszystkich" : "🟢 Pokaż tylko żywych";
-    fetchLeaderboard();  // Przeładuj leaderboard z nowym filtrem
-});
 
-// Funkcja filtrująca dane
 function filterEntries() {
     const search = document.getElementById("searchInput").value.toLowerCase();
-    const selectedClass = document.getElementById("classFilter").value; // Pobieramy wybraną klasę
+    const selectedClass = document.getElementById("classFilter").value;
+
     return allEntries.filter(entry => {
-        const matchesSearch = entry.characterName.toLowerCase().includes(search) || entry.accountName.toLowerCase().includes(search);
-        const matchesClass = !selectedClass || entry.class === selectedClass;  // Filtrujemy po klasie
+        const matchesSearch =
+            entry.characterName.toLowerCase().includes(search) ||
+            entry.accountName.toLowerCase().includes(search);
+
+        const matchesClass = !selectedClass || entry.class === selectedClass;
         const matchesDeadOnly = !showOnlyDead || entry.dead;
-        const matchesAliveOnly = !showOnlyAlive || !entry.dead;  // Filtrujemy tylko żywych, jeśli flagi showOnlyAlive jest true
+        const matchesAliveOnly = !showOnlyAlive || !entry.dead;
+
         return matchesSearch && matchesClass && matchesAliveOnly && matchesDeadOnly;
     });
 }
 
-// Zaktualizuj filtr po zmianie wyboru klasy
-document.getElementById("classFilter").addEventListener("change", fetchLeaderboard);
-
-
-// Funkcja renderująca leaderboard
 function renderLeaderboard(entries) {
     const tableBody = document.getElementById("leaderboard");
     tableBody.innerHTML = '';
 
-    // Paginacja na przefiltrowanych wynikach
     const paginatedEntries = entries.slice(offset, offset + limit);
 
     paginatedEntries.forEach(entry => {
-        const isDead = entry.dead ? '💀 RIP' : '';
-        const className = entry.class ? entry.class.replace(/\s+/g, '') : 'Unknown';
-        const progress = getExpForLevel(entry.level + 1) > getExpForLevel(entry.level)
-            ? ((entry.previousExp - getExpForLevel(entry.level)) / (getExpForLevel(entry.level + 1) - getExpForLevel(entry.level))) * 100
-            : 100; // 100% jeśli maksymalny poziom
-		const expGainedGreen = getExpForLevel(entry.level + 1) > getExpForLevel(entry.level)
-            ? ((entry.experience - getExpForLevel(entry.level)) / (getExpForLevel(entry.level + 1) - getExpForLevel(entry.level))) * 100
-            : 100; // 100% jeśli maksymalny poziom
+        const isDead = entry.dead ? 'RIP' : '';
 
-        // Formatowanie XPH
-        let xphClass = '';  // Zmienna na klasę do stylizacji XPH
+        const className = entry.class
+            ? entry.class.toLowerCase().replace(/\s+/g, '-')
+            : 'unknown';
+
+        const progress = getExpForLevel(entry.level + 1) > getExpForLevel(entry.level)
+            ? ((entry.previousExp - getExpForLevel(entry.level)) /
+                (getExpForLevel(entry.level + 1) - getExpForLevel(entry.level))) * 100
+            : 100;
+
+        const expGainedGreen = getExpForLevel(entry.level + 1) > getExpForLevel(entry.level)
+            ? ((entry.experience - getExpForLevel(entry.level)) /
+                (getExpForLevel(entry.level + 1) - getExpForLevel(entry.level))) * 100
+            : 100;
+
+        let xphClass = '';
         let xphDisplay = entry.expPerHour;
 
         if (entry.expPerHour && parseFloat(entry.expPerHour) > 0) {
-            // Jeśli XPH > 0, ustaw zieloną klasę
             xphClass = 'xph-positive';
         } else {
-            // Jeśli XPH == 0, nie pokazuj wartości
             xphDisplay = '';
         }
 
         const row = `<tr class="${className} ${entry.dead ? 'dead' : ''}">
             <td>${entry.rank}</td>
             <td>${entry.accountName}</td>
-			<td><a href="https://www.pathofexile.com/account/view-profile/${entry.accountName.replace('#', '%23')}/characters?characterName=${entry.characterName}" target="_blank" style="color: inherit; text-decoration: none;">${entry.characterName}</a></td>
+            <td><a href="https://www.pathofexile.com/account/view-profile/${entry.accountName.replace('#', '%23')}/characters?characterName=${entry.characterName}" target="_blank" style="color: inherit; text-decoration: none;">${entry.characterName}</a></td>
             <td>${entry.level}</td>
             <td>${entry.class}</td>
-			<td>
-				<div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
-					<div style="width: ${expGainedGreen}%; background: limegreen; height: 10px;  top: 0; left: 0;"></div>
-					<div style="width: ${progress}%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
-				</div>
-			</td>
+            <td>
+                <div style="width: 100px; background: #333; border-radius: 5px; overflow: hidden; display:flex; position: relative;">
+                    <div style="width: ${expGainedGreen}%; background: limegreen; height: 10px; top: 0; left: 0;"></div>
+                    <div style="width: ${progress}%; background: gray; height: 10px; position: absolute; top: 0; left: 0;"></div>
+                </div>
+            </td>
             <td class="${xphClass}">${xphDisplay}</td>
             <td>${isDead}</td>
         </tr>`;
+
         tableBody.innerHTML += row;
     });
 
-    // Aktualizacja statystyk
     const totalCharacters = entries.length;
     const totalDead = entries.filter(entry => entry.dead).length;
-    document.getElementById("stats").innerText = `Liczba postaci: ${totalCharacters} | Liczba martwych: ${totalDead}`;
+    document.getElementById("stats").innerText =
+        `Liczba postaci: ${totalCharacters} | Liczba martwych: ${totalDead}`;
 }
 
-			function getExpForLevel(level) {
-				const experienceTable = {
-					1: 0, 2: 525, 3: 1760, 4: 3781, 5: 7184, 6: 12186, 7: 19324, 8: 29377, 9: 43181, 10: 61693,
-					11: 85990, 12: 117506, 13: 157384, 14: 207736, 15: 269997, 16: 346462, 17: 439268, 18: 551295, 19: 685171,
-					20: 843709, 21: 1030734, 22: 1249629, 23: 1504995, 24: 1800847, 25: 2142652, 26: 2535122, 27: 2984677,
-					28: 3496798, 29: 4080655, 30: 4742836, 31: 5490247, 32: 6334393, 33: 7283446, 34: 8384398, 35: 9541110,
-					36: 10874351, 37: 12361842, 38: 14018289, 39: 15859432, 40: 17905634, 41: 20171471, 42: 22679999,
-					43: 25456123, 44: 28517857, 45: 31897771, 46: 35621447, 47: 39721017, 48: 44225461, 49: 49176560,
-					50: 54607467, 51: 60565335, 52: 67094245, 53: 74247659, 54: 82075627, 55: 90631041, 56: 99984974,
-					57: 110197515, 58: 121340161, 59: 133497202, 60: 146749362, 61: 161191120, 62: 176922628, 63: 194049893,
-					64: 212684946, 65: 232956711, 66: 255001620, 67: 278952403, 68: 304972236, 69: 333233648, 70: 363906163,
-					71: 397194041, 72: 433312945, 73: 472476370, 74: 514937180, 75: 560961898, 76: 610815862, 77: 664824416,
-					78: 723298169, 79: 786612664, 80: 855129128, 81: 929261318, 82: 1009443795, 83: 1096169525,
-					84: 1189918242, 85: 1291270350, 86: 1400795257, 87: 1519130326, 88: 1646943474, 89: 1784977296,
-					90: 1934009687, 91: 2094900291, 92: 2268549086, 93: 2455921256, 94: 2658074992, 95: 2876116901,
-					96: 3111280300, 97: 3364828162, 98: 3638186694, 99: 3932818530, 100: 4250334444
-				};
-				return experienceTable[level] || 0;
-			}
+function getExpForLevel(level) {
+    const experienceTable = {
+        1: 0, 2: 525, 3: 1760, 4: 3781, 5: 7184, 6: 12186, 7: 19324, 8: 29377, 9: 43181, 10: 61693,
+        11: 85990, 12: 117506, 13: 157384, 14: 207736, 15: 269997, 16: 346462, 17: 439268, 18: 551295, 19: 685171,
+        20: 843709, 21: 1030734, 22: 1249629, 23: 1504995, 24: 1800847, 25: 2142652, 26: 2535122, 27: 2984677,
+        28: 3496798, 29: 4080655, 30: 4742836, 31: 5490247, 32: 6334393, 33: 7283446, 34: 8384398, 35: 9541110,
+        36: 10874351, 37: 12361842, 38: 14018289, 39: 15859432, 40: 17905634, 41: 20171471, 42: 22679999,
+        43: 25456123, 44: 28517857, 45: 31897771, 46: 35621447, 47: 39721017, 48: 44225461, 49: 49176560,
+        50: 54607467, 51: 60565335, 52: 67094245, 53: 74247659, 54: 82075627, 55: 90631041, 56: 99984974,
+        57: 110197515, 58: 121340161, 59: 133497202, 60: 146749362, 61: 161191120, 62: 176922628, 63: 194049893,
+        64: 212684946, 65: 232956711, 66: 255001620, 67: 278952403, 68: 304972236, 69: 333233648, 70: 363906163,
+        71: 397194041, 72: 433312945, 73: 472476370, 74: 514937180, 75: 560961898, 76: 610815862, 77: 664824416,
+        78: 723298169, 79: 786612664, 80: 855129128, 81: 929261318, 82: 1009443795, 83: 1096169525,
+        84: 1189918242, 85: 1291270350, 86: 1400795257, 87: 1519130326, 88: 1646943474, 89: 1784977296,
+        90: 1934009687, 91: 2094900291, 92: 2268549086, 93: 2455921256, 94: 2658074992, 95: 2876116901,
+        96: 3111280300, 97: 3364828162, 98: 3638186694, 99: 3932818530, 100: 4250334444
+    };
+    return experienceTable[level] || 0;
+}
 
+function calculateAdditionalStats() {
+    const top50 = allEntries.slice(0, 50);
+    const top100 = allEntries.slice(0, 100);
 
-        function calculateAdditionalStats() {
-            const top50 = allEntries.slice(0, 50);
-            const top100 = allEntries.slice(0, 100);
+    const averageTop50 = top50.reduce((acc, entry) => acc + entry.level, 0) / top50.length;
+    document.getElementById("averageTop50").innerText =
+        `Średni poziom top 50: ${averageTop50.toFixed(2)}`;
 
-            // Średni poziom top 50
-            const averageTop50 = top50.reduce((acc, entry) => acc + entry.level, 0) / top50.length;
-            document.getElementById("averageTop50").innerText = `Średni poziom top 50: ${averageTop50.toFixed(2)}`;
+    const averageTop100 = top100.reduce((acc, entry) => acc + entry.level, 0) / top100.length;
+    document.getElementById("averageTop100").innerText =
+        `Średni poziom top 100: ${averageTop100.toFixed(2)}`;
 
-            // Średni poziom top 100
-            const averageTop100 = top100.reduce((acc, entry) => acc + entry.level, 0) / top100.length;
-            document.getElementById("averageTop100").innerText = `Średni poziom top 100: ${averageTop100.toFixed(2)}`;
+    const aliveAboveLevel10 =
+        allEntries.filter(entry => !entry.dead && entry.level > 10).length;
 
-            // Ilość żywych postaci > 10 lvl
-            const aliveAboveLevel10 = allEntries.filter(entry => !entry.dead && entry.level > 10).length;
-            document.getElementById("aliveAboveLevel10").innerText = `Ilość żywych postaci >10 lvl: ${aliveAboveLevel10}`;
-        }
+    document.getElementById("aliveAboveLevel10").innerText =
+        `Ilość żywych postaci >10 lvl: ${aliveAboveLevel10}`;
+}
 
-		function fetchLeaderboard() {
-			const filteredEntries = filterEntries(); // Filtrujemy przed paginacją
-			offset = Math.min(offset, Math.max(0, filteredEntries.length - limit)); // Zapobiega pustym stronom
-			renderLeaderboard(filteredEntries);
-		}
+function fetchLeaderboard() {
+    const filteredEntries = filterEntries();
+    offset = Math.min(offset, Math.max(0, filteredEntries.length - limit));
+    renderLeaderboard(filteredEntries);
+}
 
-        document.getElementById("prevPage").addEventListener("click", () => {
-            if (offset >= limit) {
-                offset -= limit;
-                fetchLeaderboard();
-            }
-        });
+document.getElementById("prevPage").addEventListener("click", () => {
+    if (offset >= limit) {
+        offset -= limit;
+        fetchLeaderboard();
+    }
+});
 
-        document.getElementById("nextPage").addEventListener("click", () => {
-            offset += limit;
-            fetchLeaderboard();
-        });
-		
-		document.getElementById("firstPage").addEventListener("click", () => {
-			offset = 0;
-			fetchLeaderboard();
-		});
+document.getElementById("nextPage").addEventListener("click", () => {
+    offset += limit;
+    fetchLeaderboard();
+});
 
-		document.getElementById("lastPage").addEventListener("click", () => {
-			const filteredEntries = filterEntries();
-			offset = Math.max(0, filteredEntries.length - limit);
-			fetchLeaderboard();
-		});
+document.getElementById("firstPage").addEventListener("click", () => {
+    offset = 0;
+    fetchLeaderboard();
+});
 
+document.getElementById("lastPage").addEventListener("click", () => {
+    const filteredEntries = filterEntries();
+    offset = Math.max(0, filteredEntries.length - limit);
+    fetchLeaderboard();
+});
 
-        document.getElementById("searchInput").addEventListener("input", fetchLeaderboard);
-        // Pobierz dane leaderboarda, gdy strona jest załadowana
-		
-        fetchAllEntries();
-    
+document.getElementById("searchInput").addEventListener("input", fetchLeaderboard);
+
+fetchAllEntries();
