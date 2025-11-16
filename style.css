@@ -1,21 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
 body {
     width: 100%;
     margin: 0;
-    background-image: linear-gradient(to top, rgba(16,1,31,0.839), rgba(16,1,31,0.839)), url(img/bg.jpg);
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.839), rgba(44, 44, 44, 0.839)), url(img/cementerio-halloween-11769.jpg);
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 html, body {
     height: 100%;
     margin: 0;
 }
-body {
-    display: flex;
-    flex-direction: column;
-}
+
 .top-content {
     margin: 0;
     width: 100%;
@@ -32,10 +32,10 @@ body {
 }
 
 .gradient-text {
-    background: linear-gradient(270deg, #FF006B 22%, #FE6BFF 73%);
+    background: linear-gradient(180deg, #e5e5e5 0%, #bfbfbf 40%, #8e8e8e 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Creepster', cursive;
     font-size: 3.125em;
     line-height: 1;
     font-weight: 700;
@@ -155,7 +155,7 @@ table {
     background: #0d0b0a;
     box-shadow: 0 0 25px rgba(0,0,0,0.6);
     border: 1px solid #3a2c1a;
-    font-family: "Trajan Pro", "Cinzel", serif;
+    font-family: 'Inter', sans-serif;
     color: #c8b38a;
 }
 
@@ -191,17 +191,50 @@ table a {
 
 table a:hover {
     color: #ffdf9b;
-    text-shadow: 0 0 8px #b8964c;
 }
+tr.marauder:not(.dead) { color: #a64d4d; }
+tr.juggernaut:not(.dead) { color: #8b3c3c; }
+tr.berserker:not(.dead) { color: #b34747; }
+tr.chieftain:not(.dead) { color: #a36e5c; }
+tr.witch:not(.dead) { color: #4a7aa3; }
+tr.necromancer:not(.dead) { color: #6b5c99; }
+tr.elementalist:not(.dead) { color: #5b61a3; }
+tr.occultist:not(.dead) { color: #6c5c8b; }
+tr.templar:not(.dead) { color: #a38f5c; }
+tr.inquisitor:not(.dead) { color: #7f8b61; }
+tr.hierophant:not(.dead) { color: #8b7f5c; }
+tr.guardian:not(.dead) { color: #7f9966; }
+tr.shadow:not(.dead) { color: #4d7f8b; }
+tr.assassin:not(.dead) { color: #5c7f7f; }
+tr.saboteur:not(.dead) { color: #567f8b; }
+tr.trickster:not(.dead) { color: #5c9b8b; }
+tr.duelist:not(.dead) { color: #a97a61; }
+tr.slayer:not(.dead) { color: #b36e6e; }
+tr.gladiator:not(.dead) { color: #7f5555; }
+tr.champion:not(.dead) { color: #7f7f61; }
+tr.ranger:not(.dead) { color: #669966; }
+tr.deadeye:not(.dead) { color: #5f7f61; }
+tr.raider:not(.dead) { color: #7a9b69; }
+tr.pathfinder:not(.dead) { color: #729966; }
+tr.warden:not(.dead) { color: #6c8b61; }
+tr.scion:not(.dead) { color: #8b61a3; }
+tr.ascendant:not(.dead) { color: #8b6e8b; }
 
 tr.dead {
-    background: rgba(80, 0, 0, 0.25) !important;
-    color: #ffb4b4;
+    color: #666 !important;
+    opacity: 0.55;
+    filter: grayscale(1);
+    
+    background: #0f0e0e;
 }
 
-tr.dead td {
-    text-shadow: 0 0 6px rgba(255, 50, 50, 0.8);
+
+tr.dead:hover {
+     /* szary, martwy */
+    color: #ffb4b4;       /* szary, martwy */
+    opacity: 1;
 }
+
 
 .progress-container {
     width: 100px;
@@ -321,7 +354,6 @@ p {
 }
 
 
-/* ------ RESPONSYWNOŚĆ ------ */
 
 @media (max-width: 1024px) {
     table {
@@ -383,4 +415,3 @@ p {
         max-width: 300px;
     }
 }
-
